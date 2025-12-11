@@ -1,16 +1,35 @@
-# React + Vite
+# 📊 Expense Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and intuitive **React-based Expense Tracker** that helps users manage budgets, track their daily spending, and visualize financial data through dynamic charts. Designed with clean UI, reusable components, and scalable state management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* 💸 **Add, edit, and delete expenses**
+* 🗂️ **Organize expenses by categories**
+* 📊 **Interactive charts** for spending insights
+* 📁 **Multiple budgets** with real-time updates
+* 🔍 **Filter & sort** functionality
+* 💾 **Local storage or Redux state management**
+* 📱 **Responsive and modern UI**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **React**
+* **Redux Toolkit**
+* **React Router**
+* **Chart.js / Recharts**
+* **TailwindCSS**
+* **UUID** for unique IDs
+
+<img width="1897" height="901" alt="Ekran görüntüsü 2025-12-11 021418" src="https://github.com/user-attachments/assets/cddea26b-5828-4fa6-8917-591a18b2ced7" />
+
+<img width="1913" height="899" alt="Ekran görüntüsü 2025-12-11 021430" src="https://github.com/user-attachments/assets/850b9d67-1511-4553-a364-e27d421613e7" />
+
+<img width="1891" height="888" alt="Ekran görüntüsü 2025-12-11 021447" src="https://github.com/user-attachments/assets/d39804b4-f351-4155-bcc3-5b44344e7390" />
+
+
+
