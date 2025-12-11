@@ -7,11 +7,15 @@ import AddExpenseForm from "./AddExpenseForm";
 import BudgetList from "./BudgetList";
 import LatestExpenses from "./LatestExpenses";
 import { removeBudget } from "../../store/Slices/BudgetSlice";
+import { FaPenToSquare } from "react-icons/fa6";
 import { useEffect } from "react";
+import EditBudgetModal from "./EditBudgetModal";
+import { toggleBudgetModal } from "../../store/Slices/ModalSlice";
 
 export default function BudgetDetail() {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const editBudgetModal = useSelector((state) => state.modal.isBudgetModalOpen);
   const budgets = useSelector((state) => state.budget.budgets);
   const budget = budgets?.find((b) => b.categoryId === id);
   const percent = (budget?.spent / budget?.amount) * 100;
@@ -37,7 +41,16 @@ export default function BudgetDetail() {
               </Link>
               <SectionDivider>My Expenses</SectionDivider>
             </div>
-            <div>
+            <div className="flex gap-2">
+              <button
+                onClick={() => dispatch(toggleBudgetModal())}
+                className="flex gap-2 items-center justify-center w-25 bg-blue-500 hover:bg-blue-600 text-stone-50 rounded-md p-2 cursor-pointer px-5"
+              >
+                <span>
+                  <FaPenToSquare />
+                </span>
+                Edit
+              </button>
               <button
                 onClick={() => dispatch(removeBudget({ budgetId: budget.id }))}
                 className="flex gap-2 items-center justify-center w-25 bg-red-500 hover:bg-red-600 text-stone-50 rounded-md p-2 cursor-pointer px-5"
@@ -65,6 +78,7 @@ export default function BudgetDetail() {
           <div>
             <LatestExpenses budget={budget} />
           </div>
+          <div>{editBudgetModal && <EditBudgetModal budget={budget} />}</div>
         </div>
       </section>
     </>

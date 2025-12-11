@@ -27,6 +27,13 @@ const BudgetSlice = createSlice({
       const { budgetId } = action.payload;
       state.budgets = state.budgets.filter((b) => b.id !== budgetId);
     },
+    updateBudget: (state, action) => {
+      const { budgetId, newAmount } = action.payload;
+      const budget = state.budgets.find((b) => b.id === budgetId);
+      if (budget) {
+        budget.amount = newAmount;
+      }
+    },
     addExpense: (state, action) => {
       const { budgetId, expense } = action.payload;
       const budget = state.budgets.find((b) => b.id === budgetId);
@@ -57,6 +64,11 @@ export const selectAllExpenses = createSelector([selectBudgets], (budgets) =>
   )
 );
 
-export const { createBudget, removeBudget, addExpense, removeExpense } =
-  BudgetSlice.actions;
+export const {
+  createBudget,
+  removeBudget,
+  updateBudget,
+  addExpense,
+  removeExpense,
+} = BudgetSlice.actions;
 export default BudgetSlice.reducer;
