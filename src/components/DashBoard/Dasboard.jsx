@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
+import { selectDashboardStats } from "../../store/Slices/BudgetSlice";
 import { LuPiggyBank } from "react-icons/lu";
 import { GiPayMoney } from "react-icons/gi";
 import { IoWalletSharp } from "react-icons/io5";
 import { GrMoney } from "react-icons/gr";
 import { MdOutlinePayment } from "react-icons/md";
 import { TbReportMoney } from "react-icons/tb";
-import { categories } from "../../data/data";
 import StatsCard from "./StatsCard";
 import SectionDivider from "../SectionDivider/SectionDivider";
 import LatestBudgets from "./LatestBudgets";
@@ -14,30 +14,17 @@ import ExpenseBarChart from "./ExpenseBarChart";
 import ExpensePieChart from "./ExpensePieChart";
 
 export default function Dashboard() {
-  const budgets = useSelector((state) => state.budget.budgets);
-
-  // Expense Pie Chart and Expense Bar Chart Data
-  const labels = budgets.map(
-    (b) => categories.find((c) => c.id === b.categoryId).name
-  );
-  const spentValue = budgets.map((b) => b.spent);
-
-  // StatsCard Data
-  const totalBudget = budgets.reduce((total, b) => total + b.amount, 0);
-  const totalSpend = budgets
-    .flatMap((b) => b.expenses)
-    .reduce((total, e) => total + e.cost, 0);
-  const numberOfBudgets = budgets.length;
-  const remaningBudget = totalBudget - totalSpend;
-  const percentageOfUsed = totalBudget
-    ? ((totalSpend / totalBudget) * 100).toFixed(1)
-    : 0;
-  const mostExpensiveBudget = budgets.reduce((b, max) =>
-    b.spent > max.spent ? b : max
-  );
-  const mostExpensiveCategory = categories.find(
-    (c) => c.id === mostExpensiveBudget.categoryId
-  ).name;
+  const {
+    labels,
+    spentValue,
+    totalBudget,
+    totalSpend,
+    numberOfBudgets,
+    remaningBudget,
+    percentageOfUsed,
+    mostExpensiveCategory,
+    budgets,
+  } = useSelector(selectDashboardStats);
 
   const stats = [
     {
@@ -83,7 +70,6 @@ export default function Dashboard() {
       dolarIcon: false,
     },
   ];
-
   return (
     <div className="px-4">
       <div className="my-3">

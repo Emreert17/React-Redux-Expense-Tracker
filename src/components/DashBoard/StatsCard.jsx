@@ -1,5 +1,4 @@
 import React from "react";
-import { LuPiggyBank } from "react-icons/lu";
 export default function StatsCard({ stat }) {
   return (
     <>

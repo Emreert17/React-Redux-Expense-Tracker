@@ -1,12 +1,11 @@
 import { useSelector } from "react-redux";
+import { selectLatestBudgets } from "../../store/Slices/BudgetSlice";
 import { Link } from "react-router";
 import BudgetList from "../Budget/BudgetList";
 
 export default function LatestBudgets() {
-  const budgets = useSelector((state) => state.budget.budgets);
-  const startIndex = budgets.length - 4;
-  const endIndex = budgets.length;
-  const latestBudgets = budgets.slice(startIndex, endIndex);
+  const { latestBudgets } = useSelector(selectLatestBudgets);
+
   return (
     <>
       <div className="flex flex-col gap-2">
